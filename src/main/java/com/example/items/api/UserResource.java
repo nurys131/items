@@ -17,6 +17,11 @@ import java.util.List;
 public class UserResource {
     private final UserService userService;
 
+    @GetMapping("/hello")
+    public String hello () {
+        return ResponseEntity.ok("Hello!").toString();
+    }
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> listUsers() {
         return ResponseEntity.ok().body(userService.getUsers());

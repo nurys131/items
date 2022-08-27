@@ -33,12 +33,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         customAuthenticationFilter.setFilterProcessesUrl("/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/**").permitAll();
+//        http.authorizeRequests().antMatchers("/users/**").permitAll();
+        http.authorizeRequests().antMatchers("/register/**").permitAll();
 //        http.authorizeRequests().antMatchers(HttpMethod.GET, "/users/**").permitAll();
 //        http.authorizeRequests().antMatchers(HttpMethod.POST, "/users/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+//    http.csrf().disable();
+//    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//    http.authorizeRequests().anyRequest().permitAll();
+//    http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
     }
 
     @Bean @Override
