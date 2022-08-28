@@ -1,6 +1,6 @@
 package com.example.items.service;
 
-import com.example.items.domain.User;
+import com.example.items.model.User;
 
 import java.util.List;
 

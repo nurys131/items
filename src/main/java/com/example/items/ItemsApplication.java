@@ -1,6 +1,8 @@
 package com.example.items;
 
-import com.example.items.domain.User;
+import com.example.items.model.Item;
+import com.example.items.model.User;
+import com.example.items.service.ItemService;
 import com.example.items.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,10 +26,16 @@ public class ItemsApplication {
     }
 
     @Bean
-    CommandLineRunner runner(UserService userService) {
+    CommandLineRunner runner(UserService userService, ItemService itemService) {
         return args -> {
-            userService.saveUser(new User(UUID.randomUUID(), "adam", "adam"));
-            userService.saveUser(new User(UUID.randomUUID(), "john", "1234"));
+            UUID uuid1 = UUID.randomUUID();
+            UUID uuid2 = UUID.randomUUID();
+            userService.saveUser(new User(uuid1, "adam", "adam"));
+            userService.saveUser(new User(uuid2, "john", "1234"));
+
+            itemService.saveItem(new Item(UUID.randomUUID(), uuid1, "maka"));
+            itemService.saveItem(new Item(UUID.randomUUID(), uuid1, "kawior"));
+            itemService.saveItem(new Item(UUID.randomUUID(), uuid2, "jajka"));
         };
     }
 }

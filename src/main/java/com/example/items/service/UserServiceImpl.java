@@ -1,6 +1,6 @@
 package com.example.items.service;
 
-import com.example.items.domain.User;
+import com.example.items.model.User;
 import com.example.items.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
